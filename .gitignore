@@ -1,0 +1,6 @@
+.DS_Store
+nginx
+nginx-vod-module
+docker-compose.yml
+*.mpd
+*.m3u8
