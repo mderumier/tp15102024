@@ -197,7 +197,7 @@ _/!\ Redemarrez le serveur_
 
    http://localhost:3030/...
 
-   [https//XXXXX.app.github.dev/](https://congenial-space-capybara-xg6rqww995636v65-3030.app.github.dev/hls/,content.mp4,.urlset/master.m3u8)
+   `https://congenial-space-capybara-xg6rqww995636v65-3030.app.github.dev/hls/,content.mp4,.urlset/master.m3u8`
 
 Ouvrez la page https://timeline.fishtank.cloud, selectionnez HLS, entrez l'url publique de la playlist HLS pour streamer le fichier `content.mp4`.
 
@@ -223,11 +223,32 @@ Avec ffmpeg, séparez les essences audio et video dans des fichiers séparés av
 
 16/ Générez la requete DASH permettant de streamer tous fichiers séparés dans le même stream. Analysez le manifest fabriqué.
 
+`https://congenial-space-capybara-xg6rqww995636v65-3030.app.github.dev/dash/,audio-fr.mp4,audio-en.mp4,video-uhd.mp4,.urlset/manifest.mpd`
 
+Le manifest est similaire a celui d'avant.
 
 17/ Générez la requete HLS permettant de streamer tous fichiers séparés dans le même stream. Analysez le m3u fabriqué.
 
+`https://congenial-space-capybara-xg6rqww995636v65-3030.app.github.dev/hls/,video-uhd.mp4,audio-en.mp4,audio-fr.mp4,.urlset/master.m3u8`
+
 A partir de l'essence video, declinez des versions HD 1080, 720 et SD 540 en H264.
+
+On modifie la résolution de la vidéo en 1920:1080 :
+
+`ffmpeg -i content.mp4 -vf scale=1920:1080 -map 0:v video-HD1080.mp4`
+
+En 720 :
+
+`ffmpeg -i video-uhd.mp4 -vf scale= -map 0:v video-720.mp4`
+
+En 540 :
+
+``
+
+Et en H264 :
+
+``
+
 
 18/ Générez la requete DASH permettant de streamer tous fichiers séparés dans le même stream. Analysez le manifest fabriqué.
 
