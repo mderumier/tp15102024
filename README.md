@@ -134,7 +134,7 @@ La commande curl retourne un `{"status":"success"}`.
 
 Quelle est l'url publique permettant d'accèder au serveur NGINX ?
 
-L'URL publique est la suivante : http://localhost:3030.
+L'URL publique est la suivante : [http://localhost:3030](https://congenial-space-capybara-xg6rqww995636v65-3030.app.github.dev/).
 
 Le fichier de test que nous allons utiliser est `MP4/content.mp4`.
 
@@ -144,7 +144,6 @@ Les caractéristiques techniques sont les suivantes :
 
 - Stream 1 : `(fra): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 317 kb/s`
 - Stream 2 : `(eng): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 317 kb/s`
-
 
 ## Configuration Nginx
 
@@ -171,6 +170,8 @@ _/!\ Redemarrez le serveur_
 
 Ouvrez la page https://timeline.fishtank.cloud, selectionnez DASH, entrez l'url publique du manifest pour streamer le fichier `content.mp4`.
 
+`https://congenial-space-capybara-xg6rqww995636v65-3030.app.github.dev/dash/,content.mp4,.urlset/manifest.mpd`
+
 11/ Descrivez le contenu du Manifest.
 
 12/ Ouvrez la console du navigateur web `ctrl + maj + i` et l'onglet network. Quelle activité réseau remarquez vous lors de la lecture de la video et changez de piste audio pendant le stream ?
@@ -190,7 +191,7 @@ _/!\ Redemarrez le serveur_
 
 13/ Créez les requêtes localhost et publique pour streamer le fichier `content.mp4` en HLS pour les master.m3u8 et index.m3u8 (CF la documentation de nginx-vod).
 
-   http://localhost:3030/...
+   http://localhost:3030/dash/,content.mp4,.urlset/manifest.mpd
 
    https//XXXXX.app.github.dev/...
 
