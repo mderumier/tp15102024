@@ -1,3 +1,5 @@
+# Mathilde Derumier - 5A AVM #
+
 # TP STREAMING ABS DASH et HLS
 
 Dans ce TP nous allons compiler et configurer un service de streaming ABS DASH et HLS à partir des projets open-source Nginx et Nginx-vod-module.
@@ -13,6 +15,8 @@ Le serveur de streaming sera compilé et executé dans un container Docker et co
 ## Service de streaming
 
 1/ Listez les codecs audio et vidéo utilisables par Nginx-vod-module pour faire du DASH
+
+Les codecs audios et vidéos utilisables par Nginx-vod-module pour faire du DASH sont les suivants :  H264, H265, AV1, VP8, VP9 (pour la vidéo) et AAC, AC-3, E-AC-3, VORBIS et OPUS.
 
 2/ Listez les codecs audio et vidéo utilisables par Nginx-vod-module pour faire du HLS
 
