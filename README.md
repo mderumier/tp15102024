@@ -174,6 +174,8 @@ Ouvrez la page https://timeline.fishtank.cloud, selectionnez DASH, entrez l'url 
 
 11/ Descrivez le contenu du Manifest.
 
+Le manifest contient de l'audio et de la vidéo, représentés par des couleurs différentes : bleu et vert.
+
 12/ Ouvrez la console du navigateur web `ctrl + maj + i` et l'onglet network. Quelle activité réseau remarquez vous lors de la lecture de la video et changez de piste audio pendant le stream ?
 
 ### Configuration HLS
