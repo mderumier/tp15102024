@@ -178,6 +178,8 @@ Le manifest contient de l'audio et de la vidéo, représentés par des couleurs 
 
 12/ Ouvrez la console du navigateur web `ctrl + maj + i` et l'onglet network. Quelle activité réseau remarquez vous lors de la lecture de la video et changez de piste audio pendant le stream ?
 
+On remarque un changement de segment.
+
 ### Configuration HLS
 
 Dans le fichier `conf/nginx.conf` ajouter dans le bloc http>server la configuration pour le HLS permettant de streamer les fichiers du dossier /opt/mp4/.
@@ -193,15 +195,19 @@ _/!\ Redemarrez le serveur_
 
 13/ Créez les requêtes localhost et publique pour streamer le fichier `content.mp4` en HLS pour les master.m3u8 et index.m3u8 (CF la documentation de nginx-vod).
 
-   http://localhost:3030/dash/,content.mp4,.urlset/manifest.mpd
+   http://localhost:3030/...
 
-   https//XXXXX.app.github.dev/...
+   [https//XXXXX.app.github.dev/](https://congenial-space-capybara-xg6rqww995636v65-3030.app.github.dev/hls/,content.mp4,.urlset/master.m3u8)
 
 Ouvrez la page https://timeline.fishtank.cloud, selectionnez HLS, entrez l'url publique de la playlist HLS pour streamer le fichier `content.mp4`.
 
 14/ Decrivez le fichier m3u8.
 
+Le fichier m3u8 contient les mêmes informations que le DASH mais présenté autrement (en ligne).
+
 15/ Ouvrez la console du navigateur web `ctrl + maj + i` et l'onglet network. Quelle activité réseau remarquez vous lors de la lecture de la video ?
+
+Lors de la lecture vidéo il n'y a aucun mouvement réseau. Tout est constant.
 
 ## Adaptive bitrate streaming
 
@@ -213,7 +219,11 @@ _ffmpeg est disponible dans codespace._
 
 Avec ffmpeg, séparez les essences audio et video dans des fichiers séparés avec `codec copy`.
 
+`ffmpeg -i content.mp4 -codec copy -map 0:v video-uhd.mp4 -map 0:a:0 audio-fr.mp4 -map 0:a:1 audio-en.mp4`
+
 16/ Générez la requete DASH permettant de streamer tous fichiers séparés dans le même stream. Analysez le manifest fabriqué.
+
+
 
 17/ Générez la requete HLS permettant de streamer tous fichiers séparés dans le même stream. Analysez le m3u fabriqué.
 
