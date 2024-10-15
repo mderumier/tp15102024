@@ -113,7 +113,14 @@ Lancez le service de streaming dans le container
 
 6/ Detaillez ce qui s'affiche dans la console lors du lancement du container.
 
+Lors du lancement du container on voit toutes les étapes dans le terminal. La commande permet de lancer automatiquement les fichiers de configurations et installe les fichiers nécessaires au lancement de l'application.
+Quand tout est terminé on arrive sur une page web nous indiquant le succès de l'excecution.
+
 7/ Dans un autre terminal executez les commandes `docker images` et `docker ps`. Que remontent ces commandes ? 
+
+Ces commandes remontent les dernières manipulations effectuées. 
+`docker images` -> Indique le chemin et les informations des de la dernière image créée.
+`docker ps` -> Indique le dernier transfert réalisé.
 
 Pour exposer publiquement le container hors de github codespace, lancez cette commande :
 
@@ -123,11 +130,21 @@ Pour exposer publiquement le container hors de github codespace, lancez cette co
 
 Que retourne la commande curl ? 
 
+La commande curl retourne un `{"status":"success"}`.
+
 Quelle est l'url publique permettant d'accèder au serveur NGINX ?
 
-Le fichier de test que nous allons utilser est `MP4/content.mp4`.
+L'URL publique est la suivante : http://localhost:3030.
+
+Le fichier de test que nous allons utiliser est `MP4/content.mp4`.
 
 8/ Executez la commande `ffprobe MP4/content.mp4` et reportez les caratéristiques techniques des 'essences/stream' video et audio de ce fichier.
+
+Les caractéristiques techniques sont les suivantes :
+
+- Stream 1 : `(fra): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 317 kb/s`
+- Stream 2 : `(eng): Audio: aac (LC) (mp4a / 0x6134706D), 48000 Hz, stereo, fltp, 317 kb/s`
+
 
 ## Configuration Nginx
 
