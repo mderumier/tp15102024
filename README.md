@@ -83,6 +83,8 @@ Enfin on définit l'executable par défaut et les commandes associées.
 
 4/ Quelles sont les options fournies à la compilation de Nginx avec Nginx-vod-module ?
 
+Les options fournies à la compilation de Nginx avec Nginx-vod-module sont --prefix=/usr/local/nginx --add-module=/tmp/nginx-vod-module --with-http_stub_status_module --with-http_ssl_module --with-file-aio --with-threads --with-cc-opt="-O3".
+
 Créez le fichier `docker-compose.yml` contenant les informations suivantes :
 
 ```yml
@@ -102,6 +104,8 @@ services:
 ```
 
 5/ Que fait le fichier  `docker-compose.yml` ?
+
+Le fichier `docker-compose` renseigne sur les arguments à renseigner dans la commande. Cela comprends la version de nginx, de la version du module VOD, et de différents paramètres comme le port de communication.
 
 Lancez le service de streaming dans le container
 
