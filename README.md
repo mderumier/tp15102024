@@ -28,6 +28,59 @@ Le fichier [`Dockerfile`](https://docs.docker.com/reference/dockerfile/) contien
 
 3/ Decrivez les grandes étapes du fichier `Dockerfile`.
 
+Les grandes étapes du fichier `Dockerfiler` sont les suivantes :
+
+```Dockerfile
+ARG NGINX_VERSION
+ARG VOD_MODULE_VERSION
+#step 1
+FROM redhat/ubi8
+
+RUN yum install -y gcc-c++ \
+				   gcc \
+				   libgomp \
+				   cmake3 \
+				   make \
+				   pcre pcre-devel \
+				   curl libcurl-devel \
+				   libxml2 libxml2-devel \
+				   openssl openssl-devel \
+				   diffutils file expat-devel \
+				   libuuid libuuid-devel
+#step 2
+USER root
+RUN mkdir /tmp/nginx /tmp/nginx-vod-module 
+RUN curl -Ls -o - https://nginx.org/download/nginx-1.25.3.tar.gz | tar zxf - -C /tmp/nginx --strip-components 1
+RUN curl -Ls -o - https://github.com/kaltura/nginx-vod-module/archive/refs/tags/1.33.tar.gz | tar zxf - -C /tmp/nginx-vod-module --strip-components 1
+#step 3
+WORKDIR /tmp/nginx
+RUN ./configure --prefix=/usr/local/nginx --add-module=/tmp/nginx-vod-module --with-http_stub_status_module \
+	--with-http_ssl_module --with-file-aio --with-threads --with-cc-opt="-O3"
+RUN make -j4 && make install
+RUN rm -rf /usr/local/nginx/html /usr/local/nginx/conf/*.default /app /tmp/nginx /tmp/nginx-vod-module
+#step 4
+ENTRYPOINT ["/usr/local/nginx/sbin/nginx"]
+CMD ["-g", "daemon off;"]
+```
+
+Etape 1 
+
+- RUN yum install -> installation et lancement des différents ficheirs présents dans les dossiers. Ce sont surtout des libriaries.
+
+Etape 2
+
+Ensuite on créé un dossier nginx dans tmp, on charge les fichiers stockés aux URL renseignées avec la commande curl et on les enregistre dans le dossier indiqué en les décompressants (-o). 
+On refait la même chose avec une autre page.
+
+Etape 3
+
+On définit le répertoire de travail et on créé le fichier de configuration suivant différents paramètres.
+Ensuite, on lance la compilation et on supprime les fichiers d'installation.
+
+Etape 4
+
+Enfin on définit l'executable par défaut et les commandes associées.
+
 4/ Quelles sont les options fournies à la compilation de Nginx avec Nginx-vod-module ?
 
 Créez le fichier `docker-compose.yml` contenant les informations suivantes :
