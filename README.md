@@ -16,9 +16,11 @@ Le serveur de streaming sera compilé et executé dans un container Docker et co
 
 1/ Listez les codecs audio et vidéo utilisables par Nginx-vod-module pour faire du DASH
 
-Les codecs audios et vidéos utilisables par Nginx-vod-module pour faire du DASH sont les suivants :  H264, H265, AV1, VP8, VP9 (pour la vidéo) et AAC, AC-3, E-AC-3, VORBIS et OPUS.
+Les codecs audios et vidéos utilisables par Nginx-vod-module pour faire du DASH sont les suivants :  H264, H265, AV1, VP8, VP9 (pour la vidéo) et AAC, AC-3, E-AC-3, VORBIS, OPUS (pour l'audio).
 
 2/ Listez les codecs audio et vidéo utilisables par Nginx-vod-module pour faire du HLS
+
+Les codecs audios et vidéos utilisables par Nginx-vod-module pour faire du HLS sont les suivants : H264, H265, AV1 (pour la vidéo) et AAC, MP3, AC-3, E-AC-3, FLAC, DTS (pour l'audio).
 
 ## Preparation et conternerisation du serveur de streaming
 
