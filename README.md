@@ -239,15 +239,15 @@ On modifie la résolution de la vidéo en 1920:1080 :
 
 En 720 :
 
-`ffmpeg -i video-uhd.mp4 -vf scale= -map 0:v video-720.mp4`
+`ffmpeg -i video-uhd.mp4 -vf scale=1280:720 -map 0:v video-720.mp4`
 
 En 540 :
 
-``
+`ffmpeg -i video-uhd.mp4 -vf scale=960:540 -map 0:v video-540.mp4`
 
 Et en H264 :
 
-``
+`ffmpeg -i video-uhd.mp4 -c:v libx264 -vf -map 0:v video-h264.mp4`
 
 
 18/ Générez la requete DASH permettant de streamer tous fichiers séparés dans le même stream. Analysez le manifest fabriqué.
