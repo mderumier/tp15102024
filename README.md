@@ -231,6 +231,8 @@ Le manifest est similaire a celui d'avant.
 
 `https://congenial-space-capybara-xg6rqww995636v65-3030.app.github.dev/hls/,video-uhd.mp4,audio-en.mp4,audio-fr.mp4,.urlset/master.m3u8`
 
+Le m3u fabriqué est similaire à celui d'avant.
+
 A partir de l'essence video, declinez des versions HD 1080, 720 et SD 540 en H264.
 
 On modifie la résolution de la vidéo en 1920:1080 :
@@ -249,11 +251,30 @@ Et en H264 :
 
 `ffmpeg -i video-uhd.mp4 -c:v libx264 -vf -map 0:v video-h264.mp4`
 
-
 18/ Générez la requete DASH permettant de streamer tous fichiers séparés dans le même stream. Analysez le manifest fabriqué.
+
+`https://congenial-space-capybara-xg6rqww995636v65-3030.app.github.dev/dash/,audio-fr.mp4,audio-en.mp4,video-HD1080.mp4,.urlset/manifest.mpd`
+`https://congenial-space-capybara-xg6rqww995636v65-3030.app.github.dev/dash/,audio-fr.mp4,audio-en.mp4,video-720.mp4,.urlset/manifest.mpd`
+`https://congenial-space-capybara-xg6rqww995636v65-3030.app.github.dev/dash/,audio-fr.mp4,audio-en.mp4,video-540.mp4,.urlset/manifest.mpd`
+`https://congenial-space-capybara-xg6rqww995636v65-3030.app.github.dev/dash/,audio-fr.mp4,audio-en.mp4,video-h264.mp4,.urlset/manifest.mpd`
+
+On voit bien que la résolution a changé dans le manifest.
 
 19/ Générez la requete HLS permettant de streamer tous fichiers séparés dans le même stream. Analysez le m3u fabriqué.
 
+`https://congenial-space-capybara-xg6rqww995636v65-3030.app.github.dev/hls/,video-HD1080.mp4,audio-en.mp4,audio-fr.mp4,.urlset/master.m3u8`
+`https://congenial-space-capybara-xg6rqww995636v65-3030.app.github.dev/hls/,video-1080.mp4,audio-en.mp4,audio-fr.mp4,.urlset/master.m3u8`
+`https://congenial-space-capybara-xg6rqww995636v65-3030.app.github.dev/hls/,video-720.mp4,audio-en.mp4,audio-fr.mp4,.urlset/master.m3u8`
+`https://congenial-space-capybara-xg6rqww995636v65-3030.app.github.dev/hls/,video-540.mp4,audio-en.mp4,audio-fr.mp4,.urlset/master.m3u8`
+`https://congenial-space-capybara-xg6rqww995636v65-3030.app.github.dev/hls/,video-h264.mp4,audio-en.mp4,audio-fr.mp4,.urlset/master.m3u8`
+
+Les informations changent bien en fonction de la vidéo lancée.
+
 20/ Analysez la structure de ce manifest https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd. 
  Combien contient t'il de déclinaisons video ? 
+
+Il contient 10 déclinaisons vidéos.
+ 
  Quelle est le codec et débit utilisés pour la video de plus haute qualité ? 
+
+La vidéo de plus haute qualité utilise le codec avc1.640033 et le débit utilisé est de 12000 kbps.
